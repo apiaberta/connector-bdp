@@ -1,47 +1,34 @@
-# connector-bdp
+# API Aberta — Banco de Portugal Connector
 
-Conector API Aberta para dados financeiros do **Banco de Portugal** (BPstat) e do **BCE**.
+Microservice for financial and economic data from Banco de Portugal.
+
+## Features
+
+- Exchange rates
+- Interest rates
+- Economic indicators
+- Financial statistics
 
 ## Endpoints
 
-| Método | Path | Descrição |
-|--------|------|-----------|
-| GET | `/health` | Health check |
-| GET | `/meta` | Metadados e última actualização |
-| GET | `/bdp/rates` | Taxas de juro BCE (MRO, depósito, cedência) + €STR |
-| GET | `/bdp/lending-rates` | Taxas de crédito e depósitos em Portugal |
+- `GET /health` — Service health check
+- `GET /meta` — Service metadata
+- `GET /rates/exchange` — Exchange rates
+- `GET /rates/interest` — Interest rates
+- `GET /indicators` — Economic indicators
 
-### Exemplos
-
-```bash
-# Taxas BCE
-curl https://api.apiaberta.pt/v1/bdp/rates
-
-# Crédito habitação, consumo, depósitos a prazo
-curl https://api.apiaberta.pt/v1/bdp/lending-rates
-```
-
-## Fontes
-
-- [BPstat — Banco de Portugal](https://bpstat.bportugal.pt)
-- [ECB Data Portal](https://data.ecb.europa.eu)
-
-## Actualização
-
-Diária, via cron — sincroniza com a API BPstat às 06:00.
-
-## Configuração
+## Setup
 
 ```bash
-cp .env.example .env
-# Editar PORT e MONGO_URI se necessário
 npm install
-npm run dev
+cp .env.example .env
+npm start
 ```
 
-## Stack
+## Data Source
 
-- Node.js 22+ / ES Modules
-- Fastify 5
-- MongoDB (Mongoose)
-- node-cron
+Banco de Portugal open data APIs
+
+## License
+
+MIT
