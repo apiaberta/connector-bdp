@@ -5,7 +5,8 @@ module.exports = {
     cwd: '/data/apiaberta/connector-bdp',
     env: {
       NODE_ENV: 'production',
-      PORT: 3007,
+      HOST: '127.0.0.1',
+      PORT: 3008,
       MONGO_URI: 'mongodb://localhost:27017/apiaberta-bdp'
     },
     instances: 1,

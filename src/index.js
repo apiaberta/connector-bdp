@@ -6,7 +6,8 @@ import { metaRoutes } from './meta.js'
 import { syncRates } from './sync.js'
 
 const SERVICE_NAME = 'connector-bdp'
-const PORT      = parseInt(process.env.PORT || '3007')
+const HOST      = process.env.HOST || '127.0.0.1'
+const PORT      = parseInt(process.env.PORT || '3008')
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/apiaberta-bdp'
 
 const app = Fastify({
@@ -54,5 +55,5 @@ syncRates(app.log)
   .then(r => app.log.info({ r }, 'Initial BdP rates sync done'))
   .catch(err => app.log.error({ err }, 'Initial BdP rates sync failed'))
 
-await app.listen({ port: PORT, host: '0.0.0.0' })
-app.log.info(`${SERVICE_NAME} listening on port ${PORT}`)
+await app.listen({ port: PORT, host: HOST })
+app.log.info(`${SERVICE_NAME} listening on ${HOST}:${PORT}`)
