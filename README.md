@@ -25,6 +25,8 @@ cp .env.example .env
 npm start
 ```
 
+Listens on `127.0.0.1:3008` by default (`HOST` / `PORT`). Production and the gateway use the same port.
+
 ## Data Source
 
 Banco de Portugal open data APIs
